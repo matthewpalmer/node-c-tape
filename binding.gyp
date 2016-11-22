@@ -3,7 +3,7 @@
 		"target_name": "json-tape",
 		"sources": [
 			"json-asm.cc",
-			"tmp1.cpp",
+			"json-tape-working.cc",
 		],
 		"include_dirs": [
 			"deps/rapidjson/include"

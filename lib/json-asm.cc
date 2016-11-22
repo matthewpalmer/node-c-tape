@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "rapidjson/pointer.h"
-#include "deps/rapidjson/include/rapidjson/document.h"
+#include "../deps/rapidjson/include/rapidjson/document.h"
 #include "command.hpp"
 #include "json-asm.hpp"
 

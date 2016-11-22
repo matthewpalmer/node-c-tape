@@ -1,9 +1,9 @@
 // addon.cc
 #include <unistd.h>
 #include <node.h>
-#include "deps/rapidjson/include/rapidjson/document.h"
-#include "deps/rapidjson/include/rapidjson/writer.h"
-#include "deps/rapidjson/include/rapidjson/stringbuffer.h"
+#include "../deps/rapidjson/include/rapidjson/document.h"
+#include "../deps/rapidjson/include/rapidjson/writer.h"
+#include "../deps/rapidjson/include/rapidjson/stringbuffer.h"
 #include <iostream>
 #include <thread>
 #include <uv.h>

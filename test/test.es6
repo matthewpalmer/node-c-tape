@@ -1,8 +1,8 @@
 var bindings = require('bindings')('json-tape.node');
 var fs = require('fs');
 
-var input = fs.readFileSync('./large.json').toString();
-var tape = fs.readFileSync('./test.tape').toString();
+var input = fs.readFileSync(__dirname + '/large.json').toString();
+var tape = fs.readFileSync(__dirname + '/test.tape').toString();
 
 var runTest = function(num) {
 	console.log('Running test: ' + num);

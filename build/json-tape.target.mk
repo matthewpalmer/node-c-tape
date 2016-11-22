@@ -117,8 +117,8 @@ INCS_Release := \
 	-I$(srcdir)/deps/rapidjson/include
 
 OBJS := \
-	$(obj).target/$(TARGET)/json-asm.o \
-	$(obj).target/$(TARGET)/json-tape.o
+	$(obj).target/$(TARGET)/lib/json-asm.o \
+	$(obj).target/$(TARGET)/lib/json-tape.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)

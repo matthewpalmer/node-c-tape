@@ -2,8 +2,8 @@
 	"targets": [{
 		"target_name": "json-tape",
 		"sources": [
-			"json-asm.cc",
-			"json-tape.cc",
+			"lib/json-asm.cc",
+			"lib/json-tape.cc",
 		],
 		"include_dirs": [
 			"deps/rapidjson/include"

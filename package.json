@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node-gyp rebuild && node test.es6",
+    "test": "node-gyp rebuild && node test/test.es6",
     "install": "node-gyp rebuild"
   },
   "author": "",

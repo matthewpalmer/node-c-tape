@@ -1,18 +1,16 @@
 // addon.cc
+#include <unistd.h>
 #include <node.h>
 #include "deps/rapidjson/include/rapidjson/document.h"
 #include "deps/rapidjson/include/rapidjson/writer.h"
 #include "deps/rapidjson/include/rapidjson/stringbuffer.h"
 #include <iostream>
-#include <chrono>
 #include <thread>
 #include <uv.h>
 #include <pthread.h>
 #include <string>
 #include <sstream>
 #include <vector>
-
-#include <unistd.h>
 
 #include "command.hpp"
 #include "json-asm.hpp"
@@ -33,14 +31,6 @@ using v8::Function;
 using v8::FunctionCallbackInfo;
 using v8::Persistent;
 using v8::Handle;
-
-// TODOs
-// - convert our js json-taper to cpp
-// - split to separate files
-// - make sure we are cleaning up threads properly
-// - are we doing any unnecessary string copies on non-bg threads?
-// - Callbacks stack up... is this expected?
-// - memory usage grows over time... why is that happening + fix it
 
 struct Work {
   uv_work_t request;
@@ -95,8 +85,6 @@ void NewThreadAndWaitOnWorker(uv_work_t *req) {
   Work *work = static_cast<Work *>(req->data);
   work->done = false;
 
-  std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-
   // Run the JSON operations on a new thread and block until they complete
   pthread_t t;
   pthread_create(&t, NULL, &JsonTask, (void *)work);
@@ -111,12 +99,10 @@ void NewThreadAndWaitOnWorker(uv_work_t *req) {
 
   // JSON operations finished. 
   // When this function ends libuv will call our callback automatically.
-  cout << "Worker is returning..." << endl;
 }
 
 // Callback for libuv when our JSON task completes.
 void NewThreadAndWaitOnWorkerDone(uv_work_t *req, int status) {
-  cout << "And worker done callback called" << endl;
   Isolate *isolate = Isolate::GetCurrent();
   v8::HandleScope handleScope(isolate);
 
@@ -134,8 +120,6 @@ void NewThreadAndWaitOnWorkerDone(uv_work_t *req, int status) {
   delete work->output;
   delete work;
 }
-
-
 
 // Entrypoint. Called on the main thread.
 void Play(const FunctionCallbackInfo<Value>& args) {
@@ -173,7 +157,6 @@ void Play(const FunctionCallbackInfo<Value>& args) {
   uv_mutex_init(&work->mutex);
 
   // Move to a worker thread that will then kick off the JSON operations in the background.
-  cout << "Queueing up work..." << endl;
   uv_queue_work(uv_default_loop(), &work->request, NewThreadAndWaitOnWorker, NewThreadAndWaitOnWorkerDone);
 
   // Return to Node.

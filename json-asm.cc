@@ -94,27 +94,7 @@ namespace json_asm {
   }
 
   void *sort(Command c, rapidjson::Document *d) {
-//     Value *coll = Pointer(c.arguments[1].c_str()).Get(*d);
-
-//     if (!coll.IsArray()) return;
-
-// // x.Get<Value::Array>()[0].GetInt()
-//     Array *array = coll.GetArray();
-
-//     const char *sortProp = c.arguments[2];
-//     int len = array.Size();
-
-//     struct {
-//       bool operator()(Value a, Value b) {
-
-//       }
-//     }
-
-//     std::sort(0, len, comp);
-
-//     for (int i = 0; i < len; i++) {
-
-//     }
+    // TODO
   }
 
   void *execute(Command c, rapidjson::Document *d) {

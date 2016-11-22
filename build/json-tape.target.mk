@@ -4,9 +4,6 @@ TOOLSET := target
 TARGET := json-tape
 DEFS_Debug := \
 	'-DNODE_GYP_MODULE_NAME=json-tape' \
-	'-DUSING_UV_SHARED=1' \
-	'-DUSING_V8_SHARED=1' \
-	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
@@ -65,9 +62,6 @@ INCS_Debug := \
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=json-tape' \
-	'-DUSING_UV_SHARED=1' \
-	'-DUSING_V8_SHARED=1' \
-	'-DV8_DEPRECATION_WARNINGS=1' \
 	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
@@ -124,7 +118,7 @@ INCS_Release := \
 
 OBJS := \
 	$(obj).target/$(TARGET)/json-asm.o \
-	$(obj).target/$(TARGET)/json-tape-working.o
+	$(obj).target/$(TARGET)/json-tape.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)

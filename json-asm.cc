@@ -95,6 +95,7 @@ namespace json_asm {
 
   void *sort(Command c, rapidjson::Document *d) {
     // TODO
+    return NULL;
   }
 
   void *execute(Command c, rapidjson::Document *d) {

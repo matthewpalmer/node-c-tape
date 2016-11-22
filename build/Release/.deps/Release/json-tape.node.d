@@ -1,1 +1,0 @@
-cmd_Release/json-tape.node := c++ -bundle -stdlib=libc++ -undefined dynamic_lookup -Wl,-no_pie -Wl,-search_paths_first -mmacosx-version-min=10.11 -arch x86_64 -L./Release  -o Release/json-tape.node Release/obj.target/json-tape/lib/json-asm.o Release/obj.target/json-tape/lib/json-tape.o 

@@ -17,7 +17,3 @@ Instead, we pass and receive strings in JavaScript, and leave the JSON operation
 ## How ready is it?
 
 It works and it can be used, though it's not 100% implemented. This is more of a jumping off point if you happen to have the very niche performance needs that we do.
-
-## Also
-
-I don’t really know C++—sorry about that.
